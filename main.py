@@ -7,11 +7,11 @@ import seaborn as sns
 funcao = (input("Digite a função: "))
 N = (input("Digite o número de interações desejada: "))
 ep = (input("Digite o epsilon da sua função: "))
+a = -100000
+b = 100000
 
 def f(x):
     return funcao
-
-intervalo = (-100000, 100000)
 
 def numero_de_interacoes():
     return N
@@ -24,18 +24,30 @@ f1 = f(x1);
 f2 = f(x2);
 
 
-#def bissecao(f, a, b, ATOL):
-#    n = np.ceil(np.log2((a+b)/(2*ATOL)))
-#    a_alg = a
-#    b_alg = b
-#    
-#    for _ in range(int(n)):
-#        p = (a_alg + b_alg) / 2
-#        fp = f(p)
-#        
-#        if f(a_alg) * fp < 0: b_alg = p
-#        else: a_alg = p   
-#    
-#    return p
+
+#def f(x):
+#    return funcao
+#def b(a,b):
+#    c = b
+#    n = 0
+#    X = []
+#    Y = []
+#    while (f(c) > 10**-12) or (f(c) < -(10**-12)):
+#        c = (a+b)/2
+#        if f(c)*f(a) < 0:
+#            b = c
+#        elif f(c)*f(b) < 0:            
+#            a = c
+#        n += 1
+#        X.append(n)
+#        Y.append(c)
+#    return c, n, X, Y
+#a,n,x,y = b(-0.5,1)
+#print(a,n)
 #
-#bissecao(np.sin, 2 * np.pi / 3, 7 * np.pi / 6, 1e-8)
+#%matplotlib inline
+#import matplotlib.pyplot as plt
+#plt.figure(figsize=(10, 10))
+#plt.style.use('fivethirtyeight')
+#plt.plot(x,y, '-b', color='green')
+#plt.show()
