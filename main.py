@@ -5,46 +5,51 @@ import seaborn as sns
 
 
 funcao = (input("Digite a função: "))
-N = (input("Digite o número de interações desejada: "))
+Nint = (input("Digite o número de interações desejada: "))
 ep = (input("Digite o epsilon da sua função: "))
-a = -100000
-b = 100000
+intrvalo_a = -100000
+intervalo_b = 100000
 
-def f(x):
-    return funcao
+def bissec(intervalo_a, intervalo_b, ep):
+  # calcula o numero de interações
+  Nint = (np.log(intervalo_b - intervalo_a) - np.log(ep)) / np.log(2)
 
-def numero_de_interacoes():
-    return N
+  # pega o prox inteiro
+  Nint = np.ceil(Nint)
+  i = 0
+  print('-=' * 15)
+  print('Valor das iterações')
+  print('-=' * 15)
 
-def epsilon ():
-    return ep
+  while i < Nint:
+    # condição de Bolzano
+    if f(intervalo_a) * f(intervalo_b) > 0:
+      print('Não é possível descobrir a raiz desse intervalo')
+    else:
+      # fazer a media
+      media = (intervalo_a + intervalo_b) / 2
+      media = round(media, 6)
 
-x1, x2 = intervalo
-f1 = f(x1);
-f2 = f(x2);
+      if f(intervalo_a) * f(media) < 0:
+        intervalo_b = media
+      else:
+        intervalo_a = media
+    print(f'valor de x{i+1} = {media}')
+    i+=1
+  print()
+  return print(f'O valor da raiz é aproximadamente {media}')
 
 
-
+## definir a função aqui
 #def f(x):
-#    return funcao
-#def b(a,b):
-#    c = b
-#    n = 0
-#    X = []
-#    Y = []
-#    while (f(c) > 10**-12) or (f(c) < -(10**-12)):
-#        c = (a+b)/2
-#        if f(c)*f(a) < 0:
-#            b = c
-#        elif f(c)*f(b) < 0:            
-#            a = c
-#        n += 1
-#        X.append(n)
-#        Y.append(c)
-#    return c, n, X, Y
-#a,n,x,y = b(-0.5,1)
-#print(a,n)
+#  y = x ** 3 - 9 * x + 3
+#  return y
 #
+## chama o metodo passando intervalo e erro
+#bissec(0, 1, 10 ** -2)
+
+
+
 #%matplotlib inline
 #import matplotlib.pyplot as plt
 #plt.figure(figsize=(10, 10))
