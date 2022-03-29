@@ -1,58 +1,34 @@
-import math
 import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
+import math
 
+fun = print(input('Digite a função: '))
+precisao = float(input('Digite o valor da precisao: '))
+a = -100000
+b = 100000
 
-funcao = (input("Digite a função: "))
-Nint = (input("Digite o número de interações desejada: "))
-ep = (input("Digite o epsilon da sua função: "))
-intrvalo_a = -100000
-intervalo_b = 100000
+def f(x):
+    return fun
 
-def bissec(intervalo_a, intervalo_b, ep):
-  # calcula o numero de interações
-  Nint = (np.log(intervalo_b - intervalo_a) - np.log(ep)) / np.log(2)
+def met_bissec(a, b, precisao):
+    print("entrei aqui")
+    iteracao = (np.log(b - a) - np.log(precisao)) / np.log(2)
+    iteracao = np.ceil(iteracao)
+    i=0
+    print("Valor das iterações: ")
 
-  # pega o prox inteiro
-  Nint = np.ceil(Nint)
-  i = 0
-  print('-=' * 15)
-  print('Valor das iterações')
-  print('-=' * 15)
+    while i < iteracao:
+        if f(a)*f(b) > 0:
+            print("Não há raiz nesse intervalo!")
+        else:
+            med = (a+b) / 2
+            med = round(med, 6)
+            if f(a)*f(med) < 0:
+                b = med
+            else:
+                a = med
+                print(f'Valor de x{i+1} = {med}')
+                i+=1
+                print()
+                return print(f'O valor da raiz é aproximadamente {med}')
 
-  while i < Nint:
-    # condição de Bolzano
-    if f(intervalo_a) * f(intervalo_b) > 0:
-      print('Não é possível descobrir a raiz desse intervalo')
-    else:
-      # fazer a media
-      media = (intervalo_a + intervalo_b) / 2
-      media = round(media, 6)
-
-      if f(intervalo_a) * f(media) < 0:
-        intervalo_b = media
-      else:
-        intervalo_a = media
-    print(f'valor de x{i+1} = {media}')
-    i+=1
-  print()
-  return print(f'O valor da raiz é aproximadamente {media}')
-
-
-## definir a função aqui
-#def f(x):
-#  y = x ** 3 - 9 * x + 3
-#  return y
-#
-## chama o metodo passando intervalo e erro
-#bissec(0, 1, 10 ** -2)
-
-
-
-#%matplotlib inline
-#import matplotlib.pyplot as plt
-#plt.figure(figsize=(10, 10))
-#plt.style.use('fivethirtyeight')
-#plt.plot(x,y, '-b', color='green')
-#plt.show()
+    return met_bissec;
