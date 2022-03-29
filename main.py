@@ -1,53 +1,68 @@
-import math
 import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
+import math
+
+def funcao(x):
+    func = x ** 3 - 9 * x + 3
+    return func
+
+def met_bissec(inicial, final, precisao):
+    iteracao = (np.log(final - inicial) - np.log(precisao)) / np.log(2)
+    iteracao = np.ceil(iteracao)
+    i=0
+    print("VALORES DAS INTERAÇÕES")
+
+    while i < iteracao:
+        if funcao(inicial) * funcao(final) > 0:
+            print("Não há raiz nesse intervalo!")
+        else:
+            med = (inicial + final) / 2
+            med = round(med, 6)
+            
+            if funcao(inicial) * funcao(med) < 0:
+                final = med
+            else:
+                inicial = med
+        print(f'Valor de x{i + 1} = { med }')
+        i+=1
+    print()
+    return print(f'O valor da raiz é aproximadamente: { med }')
+
+    return met_bissec;
+
+precisao = float(input('Digite o valor da precisao: '))
+met_bissec(-100000, 100000, precisao ** -2)
 
 
-funcao = (input("Digite a função: "))
-N = (input("Digite o número de interações desejada: "))
-ep = (input("Digite o epsilon da sua função: "))
+'''
+fun = print(input('Digite a função: '))
+precisao = float(input('Digite o valor da precisao: '))
 a = -100000
 b = 100000
 
 def f(x):
-    return funcao
+    return fun
 
-def numero_de_interacoes():
-    return N
+def met_bissec(a, b, precisao):
+    print("entrei aqui")
+    iteracao = (np.log(b - a) - np.log(precisao)) / np.log(2)
+    iteracao = np.ceil(iteracao)
+    i=0
+    print("Valor das iterações: ")
 
-def epsilon ():
-    return ep
+    while i < iteracao:
+        if f(a)*f(b) > 0:
+            print("Não há raiz nesse intervalo!")
+        else:
+            med = (a+b) / 2
+            med = round(med, 6)
+            if f(a)*f(med) < 0:
+                b = med
+            else:
+                a = med
+                print(f'Valor de x{i+1} = {med}')
+                i+=1
+                print()
+                return print(f'O valor da raiz é aproximadamente {med}')
 
-x1, x2 = intervalo
-f1 = f(x1);
-f2 = f(x2);
-
-
-
-#def f(x):
-#    return funcao
-#def b(a,b):
-#    c = b
-#    n = 0
-#    X = []
-#    Y = []
-#    while (f(c) > 10**-12) or (f(c) < -(10**-12)):
-#        c = (a+b)/2
-#        if f(c)*f(a) < 0:
-#            b = c
-#        elif f(c)*f(b) < 0:            
-#            a = c
-#        n += 1
-#        X.append(n)
-#        Y.append(c)
-#    return c, n, X, Y
-#a,n,x,y = b(-0.5,1)
-#print(a,n)
-#
-#%matplotlib inline
-#import matplotlib.pyplot as plt
-#plt.figure(figsize=(10, 10))
-#plt.style.use('fivethirtyeight')
-#plt.plot(x,y, '-b', color='green')
-#plt.show()
+    return met_bissec;
+'''
