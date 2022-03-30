@@ -32,9 +32,27 @@ contador = -100000
 while contador < 100000:
   raiz = met_bissec(contador, contador + 1, 10 ** -2)
   if isinstance(raiz, float):
-    lista_intervalo.append(f'[{contador}, {contador + 1}]')
+    lista_interna = list()
+    lista_interna.append(contador)
+    lista_interna.append(contador + 1)
+    lista_intervalo.append(lista_interna)
     lista_raizes.append(raiz)
   contador += 1
 
 print(lista_intervalo)
 print(lista_raizes)
+
+for i in enumerate(lista_intervalo):
+    contador = 0
+    x = 0
+    y = 0
+    for c in i:
+        if contador == 0:
+            x = c
+        else:
+            y = c
+        contador += 1
+    k = np.linspace(x, y)
+    plt.title(f"Grafico: {x}, {y}")
+    plt.plot(k, funcao(k))
+    plt.show()
