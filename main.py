@@ -1,5 +1,8 @@
 import numpy as np
-import math
+import matplotlib.pyplot as plt
+
+lista_raizes = list()
+lista_intervalo = list()
 
 def funcao(x):
     func = x ** 3 - 9 * x + 3
@@ -7,13 +10,13 @@ def funcao(x):
 
 def met_bissec(inicial, final, precisao):
     iteracao = (np.log(final - inicial) - np.log(precisao)) / np.log(2)
+    
     iteracao = np.ceil(iteracao)
-    i=0
-    print("VALORES DAS INTERAÇÕES")
+    i = 0
 
     while i < iteracao:
         if funcao(inicial) * funcao(final) > 0:
-            print("Não há raiz nesse intervalo!")
+            return False
         else:
             med = (inicial + final) / 2
             med = round(med, 6)
@@ -22,12 +25,16 @@ def met_bissec(inicial, final, precisao):
                 final = med
             else:
                 inicial = med
-        print(f'Valor de x{i + 1} = { med }')
         i+=1
-    print()
-    return print(f'O valor da raiz é aproximadamente: { med }')
+    return med
 
-    return met_bissec;
+contador = -100000
+while contador < 100000:
+  raiz = met_bissec(contador, contador + 1, 10 ** -2)
+  if isinstance(raiz, float):
+    lista_intervalo.append(f'[{contador}, {contador + 1}]')
+    lista_raizes.append(raiz)
+  contador += 1
 
-precisao = float(input('Digite o valor da precisao: '))
-met_bissec(-100000, 100000, precisao ** -2)
+print(lista_intervalo)
+print(lista_raizes)
