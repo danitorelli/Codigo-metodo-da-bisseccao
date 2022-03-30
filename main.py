@@ -39,8 +39,10 @@ while contador < 100000:
     lista_raizes.append(raiz)
   contador += 1
 
-print(lista_intervalo)
-print(lista_raizes)
+print("Os intervalos são: \n \n" , lista_intervalo)
+print("=" * 40)
+print("O valor das Iterações é: \n \n" , lista_raizes)
+print("=" * 40)
 
 for i in enumerate(lista_intervalo):
     contador = 0
