@@ -1,11 +1,18 @@
+import math
 import numpy as np
 import matplotlib.pyplot as plt
+#from math import e 
+from numpy import e
 
 lista_raizes = list()
 lista_intervalo = list()
 
+#def getExp(x):
+#  return e**x
+
 def funcao(x):
-    func = x ** 3 - 9 * x + 3
+    #func = math.exp(e)**x - 2 * x - 1
+    func = np.exp(e)**x - 2 * x - 1
     return func
 
 def met_bissec(inicial, final, precisao):
